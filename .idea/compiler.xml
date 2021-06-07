@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springboot_demo_4" />
+        <module name="springboot_demo_3" />
+        <module name="springboot_demo_2" />
+        <module name="springboot_demo_1" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springboot_demo" target="1.8" />
+      <module name="springboot_demo_1" target="1.8" />
+      <module name="springboot_demo_2" target="1.8" />
+      <module name="springboot_demo_3" target="1.8" />
+      <module name="springboot_demo_4" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot_demo" options="-parameters" />
+      <module name="springboot_demo_1" options="-parameters" />
+      <module name="springboot_demo_2" options="-parameters" />
+      <module name="springboot_demo_3" options="-parameters" />
+      <module name="springboot_demo_4" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,48 @@
+#指定默认的环境
+spring:
+  profiles:
+    active: test
+---
+
+
+# 关于YML配置文件说明
+# 1.数据结构   key=value
+# 2.数据类型   默认都是字符串 如果需要类型转化，则狂啊及已经在内部完成
+# 3.yml写法   key:(空格) value     有层级结构 编辑时注意
+# 4.字符集编码：默认程序加载时都时UTF-8
+
+#定义环境名称
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+server:
+  port: 8080
+  #项目发布路径
+  servlet:
+    #  /缺省值   localhost:8080/jt/xxxxx 请求路径
+    context-path: /jt
+
+
+# 5.为属性赋值 hello代表前缀     key=hello.msg
+hello:
+  msg: "我喜欢开发"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+server:
+  port: 8090
+  #项目发布路径
+  servlet:
+    #  /缺省值   localhost:8090/jt/xxxxx 请求路径
+    context-path: /jt
+
+
+# 5.为属性赋值 hello代表前缀     key=hello.msg
+hello:
+  msg: "我喜欢测试"

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>v-text练习</title>
+</head>
+<body>
+<div id="app" >
+    <!-- 1.插值表达式 -->
+    <h3>{{hello}}</h3>
+    <!-- 2. v-text 数据展现 vue的指令
+        v-text 当数据没有解析成功时,页面没有任何的数据,
+        是v-cloak的升级版本.
+    -->
+    <h3 v-text="hello"></h3>
+
+    <!-- 3.v-html 将数据按照html形式进行解析
+        有时页面中的部分数据可能来源于其他的服务器. 远程
+        服务器返回的是html代码片段,如果需要将代码片段渲染为
+        页面形式,则使用该命令.
+    -->
+    <div v-html="html"></div>
+
+    <!-- 4.v-pre
+        说明:
+            跳过这个元素和它的子元素的编译过程。可以用来显示原始 Mustache 标签。跳过大量没有指令的节点会加快编译。
+        需求: 需要展现原始的Mustache标签,不需要程序编译
+     -->
+    <div v-pre>{{原始格式展现数据}}</div>
+
+    <!-- v-once 数据只渲染1次-->
+    <div v-text="one" v-once></div>
+
+    <hr />
+    <!-- v-model 双向数据绑定 适用于输入框
+        1.data中的数据发送变化时,页面数据同步更新.
+        2.当页面input框中的内容发生变化时,则同步更新data数据!
+     -->
+    <div style="border: aliceblue;">
+        <h3>双向数据绑定</h3>
+        用户名: <input type="text" name="name"  v-model="name"/>
+    </div>
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    const app = new Vue({
+        el: "#app",
+        data: {
+            hello: "您好VUE",
+            html: "<h1>好好学习,天天向上</h1>",
+            one:  "java学习",
+            name: "admin"
+        }
+    })
+</script>
+</body>
+</html>

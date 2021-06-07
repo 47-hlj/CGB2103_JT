@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Axios练习</title>
+</head>
+<body>
+<h1>Axios Ajax调用机制</h1>
+
+<form action="http://localhost:8090/addUser" method="post">
+    <input name="name" value="玉兔精"/>
+    <input name="age" value="800"/>
+    <input name="sex" value="女"/>
+    <input type="submit"  value="提交"/>
+</form>
+
+
+
+<!-- 导入axios标签 -->
+<script src="../js/axios.js"></script>
+<script>
+    //编辑ajax请求
+    //常用请求方式的类型: get delete post put
+    //分析:	get delete 同种类型 ajax语法相同
+    //		post put   同种类型 ajax语法相同
+
+    /* 1.get请求
+        URL: http://localhost:8090/getUser
+        返回值: List集合JSON数据
+    */
+    axios.get("http://localhost:8090/getUser")
+        .then(function(result){
+            //result是Axios封装的promise对象
+            //注意事项: 获取服务器返回值通过data属性.
+            console.log(result.data)
+        })
+
+    /* 2. get带参数的请求方式  ?号拼接的方式
+         URL: http://localhost:8090/getUserById?id=1
+         返回值: User对象的JSON串
+         使用场景: 参数只有个别
+     */
+    axios.get("http://localhost:8090/getUserById?id=1")
+        .then(function(result){
+            console.log(result.data)
+        })
+
+    /**
+     * params 对象的方式提交
+     * 如果将来的参数有多个,则可以封装params对象.简洁
+     */
+    axios.get("http://localhost:8090/getUserById",{
+        params: {
+            id: 1
+        }
+    }).then(function(result){
+        console.log(result.data)
+    })
+
+    /* 简化回调函数的写法 */
+    axios.get("http://localhost:8090/getUserById",{
+        params: {
+            id: 1
+        }
+    }).then((result) => {
+        console.log(result.data)
+    })
+
+    /* 利用restFul风格实现数据传参
+        restFul:
+            1.参数使用/分割
+            2.url中不能出现动词
+     */
+    axios.get("http://localhost:8090/user/1")
+        .then( result => {
+            console.log("AAAA")
+            console.log(result.data)
+        })
+
+    //ajax 删除操作
+    axios.delete("http://localhost:8090/user/1")
+        .then( result => {
+            console.log(result.data)
+        })
+
+    /**
+     * 请求类型: post/put
+     * 1.对象方式提交
+     * url: localhost:8090/addUser
+     */
+    axios.post("http://localhost:8090/addUser",{
+        name: "黑熊精",
+        age: 3000,
+        sex: "男"
+    }).then(result => {
+        console.log("post")
+        console.log(result.data)
+    })
+
+    /**
+     * 2.axios利用form表单提交数据
+     */
+    let params = new URLSearchParams();
+    params.append("name","蝎子精")
+    params.append("age",700)
+    params.append("sex", "女")
+
+    axios.post("http://localhost:8090/addUserForm",params)
+        .then(result => {
+            console.log("form表单提交成功!!!")
+            console.log(result.data)
+        })
+
+    /**
+     * 3. restFul方式实现表单数据提交
+     */
+    axios.post("http://localhost:8090/user/琵琶精/900/女")
+        .then(result => {
+            console.log("restFul实现数据提交")
+            console.log(result.data)
+        })
+
+    /**
+     * Put请求
+     * 需求: 修改id=256的name="文殊菩萨"  要求使用restFul
+     */
+    axios.put("http://localhost:8090/user/256/文殊菩萨")
+        .then(result => {
+            console.log("restFul实现数据提交")
+            console.log(result.data)
+        })
+
+    //设定基本的URL地址
+    axios.defaults.baseURL = "http://localhost:8090"
+    axios.put("/user/256/文殊菩萨")
+        .then(result => {
+            console.log("Axios简化")
+            console.log(result.data)
+        })
+
+
+
+</script>
+</body>
+</html>

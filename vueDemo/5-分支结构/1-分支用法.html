@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>分支结构</title>
+</head>
+<body>
+<div id="app">
+    <!-- 分支语法说明
+        v-if 如果条件为真,则展现数据
+        v-else-if  if与else中间的判断
+        v-else  一般与v-if同时出现 v-else不能单独出现
+     -->
+    <h1>根据分数评级</h1>
+    用户考试成绩: <input type="text" v-model="score"/><br>
+    等级:
+    <!-- 如果从多个数据中挑选一个时 使用v-if判断 -->
+    <span v-if="score>=90">优秀</span>
+    <span v-else-if="score>=80">良</span>
+    <span v-else-if="score>=70">中</span>
+    <span v-else-if="score>=60">及格</span>
+    <span v-else>不及格</span>
+
+
+    <!-- v-show测试 控制数据是否展现
+        通过display: none; 方式控制数据展现.
+        如果数据需要被频繁的访问 则使用v-show
+    -->
+    <h1 v-show="flag">测试v-show展现效果</h1>
+
+
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            score: 0,
+            flag: false
+        },
+        methods: {
+        }
+    })
+</script>
+</body>
+</html>

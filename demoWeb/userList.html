@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    1.导入JS函数库-->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <!--    2.编辑JS发Ajax请求-->
+    <script>
+        //让页面加载完成之后再执行
+        //语法：函数时编程
+        $(function () {
+            // alert("页面加载完成，jQuery引入成功");
+            //利用Ajax的get请求方式
+            //将数据以表格的形式展现
+            //种类：1.$.get()   2.$post()  3.$.getJSON() 4.$.ajax()
+            //js中可以根据
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:8090/getUser",
+                dataType:"json",
+                success:function (data) {
+                    for(i in data){
+                        var tr='<td>'+data[i].id+'</td>'+
+                            '<td>'+data[i].name+'</td>'+
+                            '<td>'+data[i].age+'</td>'+
+                            '<td>'+data[i].sex+'</td>'
+                        $("#table").append('<tr align="center">'+tr+'</tr>')
+                    }
+                },
+            })
+        });
+
+
+    </script>
+</head>
+<body>
+    <table border="1px" width="500px" align="center" id="table">
+        <tr>
+            <td colspan="4" align="center"><h1>表格数据</h1></td>
+        </tr>
+        <tr align="center">
+            <th>ID</th>
+            <th>名称</th>
+            <th>年龄</th>
+            <th>性别</th>
+        </tr>
+    </table>
+</body>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+
+</script>
+</html>

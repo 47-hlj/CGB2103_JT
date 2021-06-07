@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>属性绑定案例</title>
+
+    <!-- 定义样式 -->
+    <style>
+        .red {
+            background-color: chocolate;
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h3>v-bind学习</h3>
+    <!-- 1.入门案例 -->
+    <a href="http://www.baidu.com">百度</a><br>
+    <!-- 属性绑定语法  -->
+    <a v-bind:href="url">百度-vue1</a><br>
+    <!-- 简化操作  -->
+    <a :href="url">百度-vue2</a>
+
+    <hr />
+
+    <h3>类型绑定</h3>
+    <!-- 需求: 控制red是否展现 -->
+    <div class="red">aaaaaa</div>
+    <!-- vue的语法: {red类型名称: 布尔类型数据}
+         {red: true} red样式展现
+         {red: false} red样式不展现
+     -->
+    <div :class="{red: flag}">bbbbb</div>
+    <!-- 在vue中可以进行简单的数据计算 -->
+    <button @click="flag = !flag">切换</button>
+
+    <!-- 小结:  v-on 事件处理 函数定义
+                v-bind 事件绑定 class style
+     -->
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            url: "http://www.baidu.com",
+            flag: true
+        },
+        methods: {
+
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <!--
+        1.push() 在最后一个追加
+        2.pop() 删除最后一个
+        3.shift() 删除第一个元素
+        4.unshift() 在开头追加一个元素
+        5.splice() 在指定位置替换元素
+        6.sort() 数组排序 默认是按照字符编码的顺序进行排序
+        7.reverse() 数组反转
+     -->
+    <!-- 展现数组 -->
+    <span v-for="item in array">{{item}}  </span> <br>
+    <!-- 添加数据-->
+    数据: <input type="text" v-model="num"/> <br>
+    <button @click="push">push</button>
+    <button @click="pop">pop</button>
+    <button @click="shift">shift</button>
+    <button @click="splice">splice</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            //1.定义数组
+            array: [3,7,1,5,4],
+            num: ''
+        },
+        methods: {
+            push(){
+                this.array.push(this.num)
+            },
+            pop(){
+                this.array.pop()
+            },
+            shift(){
+                this.array.shift()
+            },
+            splice(){
+                //参数说明:
+                //	1.操作数据起始位置
+                //	2.操作数量
+                //	3.替换元素的值(如果不写表示删除)
+                //需求1：将第一位数据1替换为5
+                //this.array.splice(0,1,5)
+                //需求2：将前2位数据 换为 8,9
+                //this.array.splice(0,2,8,9)
+                //需求3: 删除第四位数据
+                //this.array.splice(3,1,'')
+                this.array.splice(3,1)
+            }
+        }
+    })
+</script>
+</body>
+</html>

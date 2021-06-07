@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Axios简化</title>
+</head>
+<body>
+<h1>Axios简化</h1>
+<!-- 导入axios标签 -->
+<script src="../js/axios.js"></script>
+<script>
+    /* 1.实现get请求获取数据 参数 id=1
+        方式1: url?id=1
+        方式2: url/1
+        方式3: url,{params....}
+     */
+    axios.get("http://localhost:8090/getUserById",{
+        params: {
+            id: 1
+        }
+    }).then(result => {
+        console.log(result.data)
+    })
+
+    //函数定义
+    async function getUser(){
+        //之前通过then的方式接收返回值的结果, 现在通过await可以直接获取返回值.
+        const result =  await axios.get("http://localhost:8090/getUserById",{
+            params:	{id: 1}
+        })
+        console.log(result)
+        console.log(result.data)
+    }
+
+
+    //解构赋值操作  想直接获取返回值结果
+    async function getUser2(){
+        //data是promise中的属性  result为data的value值
+        const {data: result} = await axios.get("http://localhost:8090/getUserById",{
+            params:	{id: 1}
+        })
+
+        console.log("解构赋值")
+        console.log(result)
+    }
+
+    //函数调用
+    getUser()
+    getUser2()
+
+    /**
+     * 解构赋值优势  回调地狱问题
+     */
+    /* $.get("url1",function(data){
+         $.get("url2",data,function(data2){
+
+         })
+    })
+
+    axios.get("url1")
+         .then(result => {
+             axios.get("ur2",{
+                 params: result.data
+             }).then( result2 => {
+                .....
+             })
+         })
+
+    async function aa(){
+        const {data: result1} = await axios.get(url1)
+        const {data: result2} = await axios.get(url2,result1)
+
+    } */
+
+
+    </body>
+</html>

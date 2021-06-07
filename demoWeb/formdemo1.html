@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>demo练习</title>
+</head>
+<body>
+<!-- action: 数据向哪里提交 一般写服务器路径
+     method: 一般数据提交 采用post请求
+ -->
+<h1>用户新增表单</h1>
+<form action="http://localhost:8090/addUser" method="post">
+    名称: <input type="text" name="name"/> <br>
+    年龄: <input type="text" name="age"/> <br>
+    性别: <input type="text" name="sex"/> <br>
+    <input type="submit" value="新增"/>
+</form>
+</body>
+</html>

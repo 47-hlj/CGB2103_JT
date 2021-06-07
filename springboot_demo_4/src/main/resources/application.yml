@@ -1,0 +1,26 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    username: root
+    password: hlj172532
+    url: jdbc:mysql://localhost:3309/jt?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+# MP  只做增强不做改变
+#  整合mybatis
+mybatis-plus:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.jt.pojo
+  #  开启驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
+
+#添加日志
+logging:
+  level:
+    com.jt.mapper: debug

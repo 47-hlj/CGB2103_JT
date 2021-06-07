@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>数据展现</title>
+
+    <!-- html样式 -->
+    <style>
+        /* 为属性定义样式 */
+        [v-cloak]{
+            /* 定义样式不显示 */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--
+    v-cloak说明:
+        当程序编译结束时,v-cloak失去效果.
+        编译没有结束时,v-cloak的隐藏效果有效
+ -->
+<div id="app"  v-cloak>
+    {{hello}}
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    const app = new Vue({
+        el: "#app",
+        data: {
+            hello: "您好VUE"
+        }
+    })
+</script>
+</body>
+</html>

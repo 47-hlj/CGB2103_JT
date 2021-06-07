@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>循环结构</title>
+</head>
+<body>
+<div id="app">
+    <!-- vue中的循环 v-for
+        1.循环获取数据的内容
+        2.可以循环复制标签
+        参数说明:
+            item: 变量名称  名称任意
+            in:	  关键字   固定写法
+            array: 要遍历的数据
+     -->
+    <h1 v-for="item in array">{{item}}</h1>
+
+    <hr />
+    <!-- v-for语法2:  获取数据/下标  -->
+    <h1 v-for="(item,index) in array">{{item}}++++++{{index}}</h1>
+
+    <hr />
+    <!-- 循环遍历集合信息 -->
+    <div v-for="item in userList">
+        <p>ID号:{{item.id}}</p>
+        <p>名称:{{item.name}}</p>
+    </div>
+    <hr />
+    <!-- 如果直接遍历对象,则输出的value值
+        参数说明:  1.value 对象的值   2.对象的key  3.数据的下标
+    -->
+    <div v-for="(value,key,index) in user">
+        <span v-text="key"></span>
+        ---
+        <span v-text="value"></span>
+        ---
+        <span v-text="index"></span>
+    </div>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            array: ["安琪拉","孙悟空","诸葛亮"],
+            userList: [{
+                id: 100,
+                name: "鲁班七号"
+            },{
+                id: 200,
+                name: "铠"
+            },{
+                id: 300,
+                name: "瑶"
+            }],
+            //定义user对象
+            user: {
+                id: 200,
+                name: "貂蝉",
+                age: 18
+            }
+        },
+        methods: {
+        }
+    })
+</script>
+</body>
+</html>
