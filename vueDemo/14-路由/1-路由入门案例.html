@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>组件化思想</title>
+</head>
+<body>
+<div id="app">
+
+    <a href="http://www.baidu.com">百度</a>
+    <!-- 2.定义路由请求地址
+        1.router-link 在解析之后形成a标签
+        2.to在解析之后,形成href属性.实现页面跳转
+    -->
+    <router-link to="/home">家</router-link>
+    <router-link to="/dog">宠物</router-link>
+    <router-link to="/zoo">动物园</router-link>
+    <!-- 2.一般需要在当前页面中展现新组件的内容(html) 提前设定展现位 占位符-->
+    <router-view></router-view>
+
+</div>
+
+
+<template id="homeTem">
+    <div>
+        <h1>这里是家</h1>
+    </div>
+</template>
+
+<template id="dogTem">
+    <div>
+        <h1>这是一只宠物狗</h1>
+    </div>
+</template>
+
+<template id="zooTem">
+    <div>
+        <h1>这里是动物园</h1>
+        <router-link to="/zoo/lion">狮子</router-link>
+        <router-link to="/zoo/tiger">老虎</router-link>
+        <!-- 设定路由占位符 -->
+        <router-view></router-view>
+    </div>
+</template>
+
+<template id="lionTem">
+    <div>
+        <h1>我是小狮子</h1>
+    </div>
+</template>
+
+<template id="tigerTem">
+    <div>
+        <h1>我是大老虎</h1>
+    </div>
+</template>
+
+<!-- 1.导入JS 注意顺序 先导入VUE.js 之后导入路由 -->
+<script src="../js/vue.js"></script>
+<script src="../js/vue-router.js"></script>
+<script>
+
+    let homeCom = {
+        template: "#homeTem"
+    }
+
+    let dogCom = {
+        template: "#dogTem"
+    }
+
+    let zooCom = {
+        template: "#zooTem"
+    }
+
+    let lionCom = {
+        template: "#lionTem"
+    }
+
+    let tigerCom = {
+        template: "#tigerTem"
+    }
+
+
+    /* 3. 实现请求与路由的绑定 定义路由对象
+        routes: 是一个数组的结构,数组中包含对象的结构 定义路由规则
+        path: 拦截请求的路径名称
+        component: 组件名称
+        children: 定义父子级关系的属性. 在指定的位置渲染子组件
+     */
+    const router = new VueRouter({
+        routes: [
+            {path: "/", redirect: "/dog"},
+            {path: "/home", component: homeCom},
+            {path: "/dog", component: dogCom},
+            {path: "/zoo", component: zooCom,
+                children:  [
+                    {path: "/zoo/tiger", component: tigerCom},
+                    {path: "/zoo/lion",  component: lionCom}
+                ]}
+        ]
+    })
+
+    //4. 将路由对象与VUE实例绑定 通过vue.js进行解析渲染.
+    const app = new Vue({
+        el: "#app",
+        router
+    })
+</script>
+</body>
+</html>
