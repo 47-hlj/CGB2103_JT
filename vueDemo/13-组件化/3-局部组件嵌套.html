@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>局部组件</title>
+</head>
+<body>
+<div id="app">
+    <home></home>
+    <dog></dog>
+</div>
+
+<!-- 2.定义dog标签 -->
+<template id="dogTem">
+    <div>
+        <h1>{{name}}</h1>
+    </div>
+</template>
+
+<!-- 1.定义home标签 -->
+<template id="homeTem">
+    <div>
+        <h1>{{name}}</h1>
+        <dog></dog>
+    </div>
+</template>
+
+
+<!-- 1.导入vue.js -->
+<script src="../js/vue.js"></script>
+<script>
+    //2.定义组件对象
+    let dog = {
+        data(){
+            return {
+                name: "哈士奇拆家狂魔"
+            }
+        },
+        //3准备模板标签
+        template: "#dogTem"
+    }
+
+    let home = {
+        data(){
+            return {
+                name: "这里是家"
+            }
+        },
+        //3准备模板标签
+        template: "#homeTem",
+        //在home中引用局部组件 必须先声明之后调用
+        components: {
+            dog
+        }
+    }
+
+    const app = new Vue({
+        el: "#app",
+        components: {
+            //1.定义home组件
+            home,
+            dog
+        }
+    })
+</script>
+</body>
+</html>
