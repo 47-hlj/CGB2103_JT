@@ -72,5 +72,14 @@ public class UserController {
         return SysResult.success();
     }
 
-
+    /**
+     * URL地址: /user/{id}
+     * 参数: id
+     * 返回值: SysResult对象
+     */
+    @DeleteMapping("/{id}")
+    public SysResult deleteUserById(@PathVariable Integer id){
+        userService.deleteUserById(id);
+        return SysResult.success();
+    }
 }

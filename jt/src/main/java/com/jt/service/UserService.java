@@ -17,4 +17,6 @@ public interface UserService {
     PageResult getUserList(PageResult pageResult);
 
     void updateStatus(User user);
+
+    void deleteUserById(Integer id);
 }
