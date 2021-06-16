@@ -3,13 +3,14 @@ package com.jt.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jt.mapper.RightsMapper;
 import com.jt.pojo.Rights;
+import com.jt.service.RightsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class RightsServiceImpl implements RightsService{
+public class RightsServiceImpl implements RightsService {
 
     @Autowired
     private RightsMapper rightsMapper;
