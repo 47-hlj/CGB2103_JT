@@ -222,13 +222,13 @@
         if(result.status !== 200) return this.$message.error("用户状态修改失败!")
         this.$message.success("用户状态修改成功!")
       },
-      handleSizeChange(pageSize){
-        //console.log("每页展现的条数"+pageSize)
+      handleSizeChange(pageSize){//如果调用分页的结构，则会自动的传递pageSize数据
+        console.log("每页展现的条数"+pageSize)
         this.queryInfo.pageSize = pageSize
         this.getUserList()
       },
       handleCurrentChange(pageNum){
-        //console.log("页数:"+pageNum)
+        console.log("页数:"+pageNum)
         this.queryInfo.pageNum = pageNum
         this.getUserList()
       },
