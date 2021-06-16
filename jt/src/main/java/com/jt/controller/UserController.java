@@ -2,6 +2,7 @@ package com.jt.controller;
 
 import com.jt.pojo.User;
 import com.jt.service.UserService;
+import com.jt.vo.PageResult;
 import com.jt.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -43,5 +44,20 @@ public class UserController {
 
     }
 
+    /**
+     * 1.业务需求: 根据条件进行分页查询
+     *  请求路径: /user/list
+     *  请求类型: GET
+     *  请求参数: 后台使用PageResult对象接收
+     *  返回值:  SysResult(pageResult对象)
+     * 分析:
+     *      1.用户参数3个   2.要求返回值5个
+     */
+    @GetMapping("/list")
+    public SysResult getUserList(PageResult pageResult){
+
+        pageResult = userService.getUserList(pageResult);
+        return SysResult.success(pageResult);
+    }
 
 }
