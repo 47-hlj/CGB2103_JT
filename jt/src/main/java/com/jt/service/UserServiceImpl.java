@@ -9,6 +9,7 @@ import com.jt.service.UserService;
 import com.jt.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
@@ -106,5 +107,38 @@ public class UserServiceImpl implements UserService {
         userMapper.deleteById(id);
     }
 
+    /**
+     * 1.要求将密码 加密处理
+     * 2.入库/更新的时间(框架帮助完成)
+     * 3.什么是事务: 操作成功 数据库提交事务  操作失败 事务回滚
+     * 关于事务控制说明:
+     *      rollbackFor: 遇到某种异常时,回滚事务
+     *      noRollbackFor: 遇到某种异常,不回滚事务
+     *      特殊环境下使用. 一般条件下采用默认行为
+     * @param user
+     */
+    @Override
+    @Transactional  //1.运行期异常  2.编译异常(检查异常)
+    // 事务默认条件下只对运行时异常有效
+    public void addUser(User user) {
+        String md5Pass =
+                DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
+        user.setPassword(md5Pass);
+        user.setStatus(true);   //设定默认值
+        userMapper.insert(user);
+    }
 
+    @Override
+    public User getUserById(Integer id) {
+
+        return userMapper.selectById(id);
+    }
+
+    //Sql: update user set p...,e where id...
+    @Override
+    @Transactional  //事务
+    public void updateUser(User user) {
+
+        userMapper.updateById(user);
+    }
 }

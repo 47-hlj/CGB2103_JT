@@ -82,4 +82,50 @@ public class UserController {
         userService.deleteUserById(id);
         return SysResult.success();
     }
+
+    /**
+     * 业务需求: 实现用户新增
+     *  URL:  /user/addUser
+     *  参数: form表单进行提交   JSON串
+     *  类型: post请求
+     *  返回值: SysResult对象
+     */
+    @PostMapping("/addUser")
+    public SysResult addUser(@RequestBody User user){
+        userService.addUser(user);
+        //int a = 1/0;
+        return SysResult.success();
+       /* try {
+            userService.addUser(user);
+            return SysResult.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            return SysResult.fail();
+        }*/
+        //如果程序失败则返回201 异常处理!!!
+    }
+
+    /**
+     * 业务分析: 根据用户ID查询数据库.
+     * URL地址: /user/{Id}
+     * 返回值: SysResult对象
+     */
+    @GetMapping("/{id}")
+    public SysResult getUserById(@PathVariable Integer id){
+        User user = userService.getUserById(id);
+        return SysResult.success(user);
+    }
+
+    /**
+     * 实现用户修改操作
+     * 1.url地址: /user/updateUser
+     * 2.参数 put   form表单提交
+     * 3. SysResult对象
+     */
+    @PutMapping("/updateUser")
+    public SysResult updateUser(@RequestBody User user){//id/p/e
+
+        userService.updateUser(user);
+        return SysResult.success();
+    }
 }

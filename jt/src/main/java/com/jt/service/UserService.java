@@ -19,4 +19,10 @@ public interface UserService {
     void updateStatus(User user);
 
     void deleteUserById(Integer id);
+
+    void addUser(User user);
+
+    User getUserById(Integer id);
+
+    void updateUser(User user);
 }
