@@ -60,4 +60,17 @@ public class UserController {
         return SysResult.success(pageResult);
     }
 
+    /**
+     * URL地址: /user/status/{id}/{status}
+     * 参数:  1.id   2.status
+     * 返回值: SysResult对象
+     *
+     */
+    @PutMapping("/status/{id}/{status}")
+    public SysResult updateStatus(User user){
+        userService.updateStatus(user);
+        return SysResult.success();
+    }
+
+
 }

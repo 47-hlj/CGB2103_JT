@@ -15,4 +15,6 @@ public interface UserService {
     String login(User user);
 
     PageResult getUserList(PageResult pageResult);
+
+    void updateStatus(User user);
 }

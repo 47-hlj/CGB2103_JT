@@ -94,4 +94,12 @@ public class UserServiceImpl implements UserService {
         return pageResult.setRows(list).setTotal(total);
     }
 
+    //user:{id:xxx,status:true/false}
+    @Override
+    public void updateStatus(User user) {
+
+        userMapper.updateById(user);
+    }
+
+
 }
