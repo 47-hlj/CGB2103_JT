@@ -21,7 +21,6 @@
         <el-step title="完成"></el-step>
       </el-steps>
 
-
       <!-- 定义标签页 before-leave:切换标签之前的钩子，若返回 false 或者返回 Promise 且被 reject，则阻止切换。 -->
       <el-form :model="addItemForm" :rules="addItemFormRules" ref="addItemFormRef" label-width="100px"
         label-position="top">
@@ -48,6 +47,12 @@
 
           <!-- 实现图片上传 multiple支持多选文件 -->
           <el-tab-pane label="商品图片" name="1">
+            <!--:action：文件上传时提交的地址
+                :on-preview：成功之后展现数据时回调2
+                :on-remove：移除操作时执行
+                :on-success：上传成功之后立即回调1
+                name：文件上传时的名称 默认是file
+            -->
             <el-upload class="upload-demo" :action="uploadUrl" :on-preview="handlePreview" :on-remove="handleRemove"
               :on-success="handleSuccess" list-type="picture" multiple drag>
               <el-button size="small" type="primary">点击上传</el-button>
@@ -172,7 +177,7 @@
           return false
         }
       },
-      //预览图片的方法
+      //预览图片的方法 上传成功之后 需要的一个回调2
       handlePreview(file) {
         //获取图片的虚拟路径
         this.imageUrlPath = file.response.data.urlPath
