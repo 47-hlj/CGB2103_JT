@@ -14,4 +14,5 @@ public class ImageVO {
     private String virtualPath; //文件动态路径
     private String urlPath;     //文件网络路径
     private String fileName;    //文件名称
+
 }
