@@ -4,11 +4,10 @@ server:
     context-path: /
 spring:
   datasource:
-    #如果使用高版本的数据库则添加cj
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/jt?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
     username: root
     password: hlj172532
+    url: jdbc:mysql://localhost:3309/jt?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 
 #mybatis-plush配置
