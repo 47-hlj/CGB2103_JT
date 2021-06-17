@@ -5,6 +5,7 @@ import com.jt.service.ItemCatService;
 import com.jt.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
 
@@ -53,6 +54,18 @@ public class ItemCatController {
     public SysResult saveItemCat(@RequestBody ItemCat itemCat){
 
         itemCatService.saveItemCat(itemCat);
+        return SysResult.success();
+    }
+
+    /**
+     * 商品分类信息修改
+     * URL地址： /itemCat/updateItemCat
+     * 请求参数：表单数据 ItemCat对象
+     * 返回值：SysResult对象
+     */
+    @PutMapping("/updateItemCat")
+    public SysResult updateItemCat(@RequestBody ItemCat itemCat){
+        itemCatService.updateItemCat(itemCat);
         return SysResult.success();
     }
 

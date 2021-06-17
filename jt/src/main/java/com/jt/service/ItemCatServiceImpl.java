@@ -149,4 +149,10 @@ public class ItemCatServiceImpl implements ItemCatService {
             itemCatMapper.deleteById(id);
         }
     }
+
+    @Override
+    public void updateItemCat(ItemCat itemCat) {
+
+        itemCatMapper.updateById(itemCat);
+    }
 }

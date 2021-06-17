@@ -13,4 +13,6 @@ public interface ItemCatService {
     void saveItemCat(ItemCat itemCat);
 
     void deleteItemCat(Integer id, Integer level);
+
+    void updateItemCat(ItemCat itemCat);
 }
