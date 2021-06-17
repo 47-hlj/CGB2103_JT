@@ -6,6 +6,7 @@ import User from  '../components/user/user.vue'
 import Welcome from '../components/Welcome.vue'
 import ItemCat from "../components/items/ItemCat.vue";
 import Item from "../components/items/Item.vue";
+import AddItem from "../components/items/addItem.vue"
 
 Vue.use(VueRouter)
 const routes = [
@@ -16,7 +17,8 @@ const routes = [
     {path: '/user', component: User},
     {path: '/welcome', component: Welcome },
     {path: "/itemCat", component: ItemCat},
-    {path: "/item", component: Item}
+    {path: "/item", component: Item},
+    {path: "/item/addItem", component: AddItem}
   ]}
 ]
 
