@@ -5,6 +5,7 @@ import Home from  '../components/Home.vue'
 import User from  '../components/user/user.vue'
 import Welcome from '../components/Welcome.vue'
 import ItemCat from "../components/items/ItemCat.vue";
+import Item from "../components/items/Item.vue";
 
 Vue.use(VueRouter)
 const routes = [
@@ -14,7 +15,8 @@ const routes = [
   children:[
     {path: '/user', component: User},
     {path: '/welcome', component: Welcome },
-    {path: "/itemCat", component: ItemCat}
+    {path: "/itemCat", component: ItemCat},
+    {path: "/item", component: Item}
   ]}
 ]
 
