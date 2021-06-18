@@ -181,6 +181,9 @@
       handlePreview(file) {
         //获取图片的虚拟路径
         this.imageUrlPath = file.response.data.urlPath
+        let virtualPath = file.response.data.virtualPath
+        // console.log(virtualPath)
+        // console.log(this.imageUrlPath)
         this.dialogImageVisible = true
       },
       //移除图片的方法
